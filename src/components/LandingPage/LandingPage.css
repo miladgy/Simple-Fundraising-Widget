@@ -1,16 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css?family=PT+Sans&display=swap");
 /* @font-face {
   font-family: "Modern Sans";
   src: url("Modern Sans 400.ttf") format("truetype");
 } */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-size: 100%;
   vertical-align: baseline;
   box-sizing: border-box;
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
 }
 
 #root {
@@ -24,11 +25,14 @@ html, body {
   text-align: center;
   height: 100vh;
   align-items: center;
-  background-image: linear-gradient(to bottom right, #0b4eb3, #41b6ec);
-  
+  background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),  url(../../images/jigsaw-puzzle-giles-pegram-shutterstock-850x600.jpg);
+  background-size:cover;
+  background-position: right center;
+
 }
 
 .innerContainer {
+  left: 50px;
   padding-top: 20px;
   display: grid;
   width: 40%;
@@ -36,20 +40,20 @@ html, body {
   position: absolute;
   box-sizing: border-box;
   border-radius: 5px;
-  border: 2px black solid;
-  background-color:#c1cea3;
   transition: box-shadow 0.6s;
-  
-}
-.innerContainer:hover{
-  box-shadow: 5px 5px 25px 5px #e0ab8a;
+  background-image:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) )
  
+}
+
+.innerContainer {
+  box-shadow: 5px 5px 25px 5px #e0ab8a;
 }
 
 .description {
   grid-template-rows: 1fr 1fr;
   text-align: justify;
   margin: 30px 10px 0 10px;
+  color: rgb(248, 231, 231);
 }
 
 .LandingPageJoin {
@@ -60,16 +64,15 @@ html, body {
   padding: 12px 12px;
   width: 50%;
   font-size: 16px;
-  background-color: aliceblue;
+  background-color: rgb(252, 245, 245);
 }
 
 .heading {
-  color:black;
+  color: rgb(248, 231, 231);
   font-size: 2em;
   padding-bottom: 10px;
-  border-bottom: 2px solid white;
-  text-shadow: 2px 1px 4px rgba(204, 37, 25, 0.6);
-
+  border-bottom: 2px solid rgb(248, 231, 231);
+  text-shadow: 2px 1px 4px rgb(252, 202, 159);
 }
 
 .donationBtn {
@@ -79,90 +82,99 @@ html, body {
   text-align: center;
   font-weight: bold;
   padding: 13px;
-  border-radius: 4px;
+  border-radius: 10px;
   display: inline-block;
   width: 160px;
-  height:50px;
+  height: 50px;
   cursor: pointer;
   margin-top: 25px;
-  margin-bottom:30px;
+  margin-bottom: 30px;
   margin-left: 5px;
-  background: transparent;
   outline: none;
-  transition: 0.4s ease-in-out;
   font-size: 18px;
-  
- 
+  background-color: rgb(248, 231, 231);
 }
 
-.hideBtn, .hideInput {
+.hideBtn,
+.hideInput {
   display: none;
 }
-
 
 .error {
   grid-template-columns: 1fr;
   align-content: center;
   transition: 0.4s ease-in-out;
-  color: rgb(173, 26, 26);
+  color:rgba(173, 171, 32, 0.945);
   animation: wiggle 2.2s 3;
 }
 @keyframes wiggle {
-  0% { transform: rotate(0deg); }
-  2% { transform: rotate(2deg); }
- 80% { transform: rotate(0deg); }
- 85% { transform: rotate(5deg); }
- 95% { transform: rotate(-5deg); }
-100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  2% {
+    transform: rotate(2deg);
+  }
+  80% {
+    transform: rotate(0deg);
+  }
+  85% {
+    transform: rotate(5deg);
+  }
+  95% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
-
 .appreciation {
-background-color: rgba(134, 226, 73, 0.918);
+  background-color: rgba(180, 177, 12, 0.945);
   font-weight: 300;
   box-sizing: border-box;
   border: 2px solid black;
   width: 90%;
   height: 30px;
-  margin-left: 17px;
+  margin-left: 20px;
   margin-top: 30px;
   padding-top: 1px;
-  color: rgb(7, 7, 7);
+  color: rgb(248, 231, 231);
   animation: fadeAndScale 0.2s ease-in;
- 
 }
 @keyframes fadeAndScale {
   from {
     opacity: 0;
-    transform: scale3d(0.75, 0.75, 1)
+    transform: scale3d(0.75, 0.75, 1);
   }
   to {
     opacity: 1;
-    transform: scale3d(1, 1, 1)
+    transform: scale3d(1, 1, 1);
   }
-
 }
+
 .btn:hover svg {
   stroke-dashoffset: -480;
 }
+
 .exit {
   color: rgb(5, 10, 26) !important;
   text-decoration: none;
   text-align: center;
   font-weight: bold;
-  padding:0px;
-  border-radius: 4px;
+  padding: 0px;
+  border-radius: 10px;
   display: inline-block;
   width: 70px;
-  height:35px;
+  height: 35px;
   cursor: pointer;
   margin-top: 30px;
-  margin-bottom:25px;
-  background: rgba(206,92,129,0.6);
+  margin-bottom: 25px;
+  background: rgba(206, 92, 129, 0.6);
   transition: 0.4s ease-in-out;
   font-size: 16px;
   animation: fadeAndScale 0.2s ease-in;
 }
+
 @media (min-width: 320px) and (max-width: 480px) {
   .joinOuterContainer {
     height: 100%;

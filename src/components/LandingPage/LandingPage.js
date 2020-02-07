@@ -9,7 +9,6 @@ const LandingPage = () => {
   const showText = () => {
     if (Object.keys(errors).length === 0) {
       sethandleShow(false);
-    
     }
   };
 
@@ -17,21 +16,19 @@ const LandingPage = () => {
     showText,
     validator
   );
-  const exitPage = (event) => {
+  const exitPage = event => {
     if (event) {
       event.preventDefault();
     }
     window.location.reload(false);
-  }
+  };
 
   return (
     <div className="outerContainer">
       <div className="innerContainer">
         <form onSubmit={handleSubmit} noValidate>
           <label className="heading">Make A Donation</label>
-          {!handleShow && (
-            <ProgressBar donation={donation} />
-          )}
+          {!handleShow && <ProgressBar donation={donation} />}
           <div className="description">
             {handleShow && (
               <p>
@@ -51,17 +48,22 @@ const LandingPage = () => {
           />
           {<p>{errors.message}</p> && <p className="error">{errors.message}</p>}
 
-         
-          <button 
-        className={handleShow ? "donationBtn" : "hideInput"} type="submit">PLEDGE</button>
-          
+          <button
+            className={handleShow ? "donationBtn" : "hideInput"}
+            type="submit"
+          >
+            PLEDGE
+          </button>
+
           {!handleShow && (
             <>
-            <div className='appreciation'>
-              <strong>Thank you for your pledge!</strong>
-            </div>
-             <button class='exit' onClick={exitPage}>Exit</button>
-             </>
+              <div className="appreciation">
+                <strong>Thank you for your pledge!</strong>
+              </div>
+              <button class="exit" onClick={exitPage}>
+                Exit
+              </button>
+            </>
           )}
         </form>
       </div>

@@ -1,19 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const InputValidation = (callback, validator) => {
-  const [donation, setDonation] = useState({amount: 0});
+  const [donation, setDonation] = useState({ amount: 0 });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   // const [maxDonation, setmaxDonation] = useState(1000);
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      
-      callback(); 
+      callback();
     }
   }, [errors, isSubmitting]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     if (event) {
       event.preventDefault();
     }
@@ -21,12 +20,14 @@ const InputValidation = (callback, validator) => {
     setIsSubmitting(true);
   };
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     event.persist();
-    console.log('handlchange', event.target.value)
-    setDonation(donation => ({ ...donation, [event.target.name]: event.target.value }));
+    console.log("handlchange", event.target.value);
+    setDonation(donation => ({
+      ...donation,
+      [event.target.name]: event.target.value
+    }));
     // setmaxDonation(maxDonation);
-
   };
 
   return {
@@ -34,7 +35,7 @@ const InputValidation = (callback, validator) => {
     handleSubmit,
     donation,
     errors
-  }
+  };
 };
 
 export default InputValidation;
