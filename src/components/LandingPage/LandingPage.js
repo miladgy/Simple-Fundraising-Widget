@@ -1,71 +1,45 @@
-import React, { useState } from "react";
+import React from "react";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import Error from "../Error/Error";
+import Tooltip from "../Tooltip/Tooltip";
+import Input from "../Input/Input";
+import Description from "../Description/Description";
 import InputValidation from "../../validation/InputValidation";
 import validator from "../../validation/Validator";
+import Notification from "../Notification/Notification";
 import "./LandingPage.css";
 
 const LandingPage = () => {
-  const [handleShow, sethandleShow] = useState(true);
-  const showText = () => {
-    if (Object.keys(errors).length === 0) {
-      sethandleShow(false);
-    }
-  };
-
-  const { donation, errors, handleChange, handleSubmit } = InputValidation(
-    showText,
-    validator
-  );
-  const exitPage = event => {
-    if (event) {
-      event.preventDefault();
-    }
-    window.location.reload(false);
-  };
+  const {
+    progressPercentage,
+    errors,
+    handleChange,
+    handleSubmit,
+    handleShow,
+    sethandleShow,
+    value
+  } = InputValidation(validator);
 
   return (
-    <div className="outerContainer">
-      <div className="innerContainer">
-        <form onSubmit={handleSubmit} noValidate>
-          <label className="heading">Make A Donation</label>
-          {!handleShow && <ProgressBar donation={donation} />}
-          <div className="description">
-            {handleShow && (
-              <p>
-                Pledge money by entering the sum in the field below and press
-                pledge, we already know your credit card details.
-              </p>
+    <div className="container">
+      <h3>The fundraising widget</h3>
+      <Tooltip progressPercentage={progressPercentage} />
+      <div className="boxFrame">
+        <ProgressBar progressPercentage={progressPercentage} />
+        <div className="boxFrame_content">
+          <form onSubmit={handleSubmit} noValidate>
+            {<Description value={value} />}
+            {handleShow ? (
+              <Notification
+                handleShow={handleShow}
+                sethandleShow={sethandleShow}
+              />
+            ) : (
+              <Input handleChange={handleChange} />
             )}
-          </div>
-          <input
-            autoComplete="off"
-            className={handleShow ? "LandingPageJoin" : "hideInput"}
-            type="name"
-            name="amount"
-            onChange={handleChange}
-            value={donation.amount || ""}
-            required
-          />
-          {<p>{errors.message}</p> && <p className="error">{errors.message}</p>}
-
-          <button
-            className={handleShow ? "donationBtn" : "hideInput"}
-            type="submit"
-          >
-            PLEDGE
-          </button>
-
-          {!handleShow && (
-            <>
-              <div className="appreciation">
-                <strong>Thank you for your pledge!</strong>
-              </div>
-              <button class="exit" onClick={exitPage}>
-                Exit
-              </button>
-            </>
-          )}
-        </form>
+            <Error errors={errors} handleShow={handleShow} />
+          </form>
+        </div>
       </div>
     </div>
   );

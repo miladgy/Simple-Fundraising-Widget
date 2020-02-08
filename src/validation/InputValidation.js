@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
 
-const InputValidation = (callback, validator) => {
-  const [donation, setDonation] = useState({ amount: 0 });
+const InputValidation = validator => {
+  const [donation, setDonation] = useState(0);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // const [maxDonation, setmaxDonation] = useState(1000);
+  const [maxDonation] = useState(1000);
+  const [progressPercentage, setProgressPercentage] = useState(0);
+  const [handleShow, sethandleShow] = useState(false);
+  const [value, setValue] = useState(0);
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      callback();
+      sethandleShow(true);
+      setValue(Number(donation) + Number(value));
+      setProgressPercentage(
+        (((+value + +donation) / maxDonation) * 100).toFixed(1)
+      );
+      setDonation(0);
     }
   }, [errors, isSubmitting]);
 
@@ -22,19 +30,18 @@ const InputValidation = (callback, validator) => {
 
   const handleChange = event => {
     event.persist();
-    console.log("handlchange", event.target.value);
-    setDonation(donation => ({
-      ...donation,
-      [event.target.name]: event.target.value
-    }));
-    // setmaxDonation(maxDonation);
+    console.log(event.target.value)
+    setDonation(prevDonation => (prevDonation, event.target.value));
   };
 
   return {
+    progressPercentage,
+    errors,
     handleChange,
     handleSubmit,
-    donation,
-    errors
+    handleShow,
+    sethandleShow,
+    value
   };
 };
 

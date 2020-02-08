@@ -1,0 +1,19 @@
+input[type="text"] {
+  padding: 11px;
+  border-radius: 5px;
+  align-content: center;
+  margin-top: 20px;
+  border: 1px solid #eaeaea;
+  outline: none;
+  width: 70%;
+}
+
+button,
+input[type="submit"] {
+  padding: 12px;
+  background-color: #1cbc2c;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  outline: none;
+}
